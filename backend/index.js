@@ -7,11 +7,10 @@ app.use(express.json());
 app.use(cors());
 const PORT = 3000;
 
-import { validStudent, connonCheck} from "./middleware/middleWare.js";
-import student from "./db/db.js";
-import events from "./db/db.js";
+import { validStudent, CommonCheck } from "./middlewere/middlewere.js";
+import { student, events } from "./db/db.js";
 
-app.post("/login", validStudent, connonCheck (req, res) => {
+app.post("/login", validStudent, CommonCheck, (req, res) => {
   const newStudent = {
     email: req.body.email,
     password: req.body.password,
@@ -20,36 +19,27 @@ app.post("/login", validStudent, connonCheck (req, res) => {
   res.status(201).json(newStudent);
 });
 
-app.get("events", (req, res) => {
+app.get("/events", (req, res) => {
   res.status(200).json(events);
 });
 
-app.get("/events/:id",  (req, res) => {
+app.get("/events/:id", (req, res) => {
   const id = Number(req.params.id);
-  const user1 = events.find((user) => user.id === id);
-  res.json(user1);
+  const event = events.find((e) => e.id === id);
+  res.json(event);
 });
 
-app.post("/events", (req, res) => {
+app.post("/events", validStudent, (req, res) => {
   const newEvents = {
     id: req.body.id,
     Eventname: req.body.Eventname,
     Category: req.body.Category,
     Location: req.body.Location,
+    Date: req.body.Date,
     Description: req.body.Description,
   };
   events.push(newEvents);
   res.status(201).json(newEvents);
-});
-
-app.get("/events", common, (req, res) => {
-  res.json(events);
-});
-
-app.get("/events/:id", common, (req, res) => {
-  const id = Number(req.params.id);
-  const event1 = events.find((enevt) => events.id === id);
-  res.json(event1);
 });
 
 app.listen(PORT, () => {

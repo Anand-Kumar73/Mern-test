@@ -1,5 +1,3 @@
-Middlewere
-
 function validStudent(req,res,next){
   const{email,password}=req.body;
   if(!email ||!password){
@@ -10,7 +8,7 @@ function validStudent(req,res,next){
  }
  function CommonCheck(req,res,next){
   res.status(202).json({
-    "message":"common for every one";
+    "message":"common for every one"
   })
  } 
- export default {validStudent,CommonCheck};
+ export { validStudent, CommonCheck };

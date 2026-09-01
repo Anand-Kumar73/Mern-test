@@ -1,19 +1,16 @@
-Login.jsx
-
 import { useState } from "react";
 import { useNavigate} from "react-router-dom";
-import useNavigate from "react-router-dom";
 
 import axios from "axios";
 
 const Login = () => {
-    const [email, setSetemail] = useState("");
-    const [password, setPassword] = useState("");
+    const [email, setSetemail]=useState("");
+    const [password, setPassword]=useState("");
     
 
-    const navigate = useNavigate();
+    const navigate =useNavigate();
 
-    const handleSubmit = async (e) => {
+    const handleSubmit =async (e) => {
         e.preventDefault();
 
         try {
@@ -25,17 +22,17 @@ const Login = () => {
             navigate("/Home");
 
         } catch (error) {
-            console.log(error);
+            console.log(erroe);
         }
     };
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
+               <form onSubmit={handleSubmit}>
                 <br />
-                <input type="text" placeholder="Enter your email" value={email} onChange={(e) => setName(e.target.value)} />
+                <input type="text" placeholder="Enter your email" value={email} onChange={(e) => setSetemail(e.target.value)} />
                 <br />
-                <input type="text" placeholder="Enter your password" value={password} onChange={(e) => setBranch(e.target.value)} />
+                <input type="text" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <button type="submit">Login</button>
             </form>
         </div>
