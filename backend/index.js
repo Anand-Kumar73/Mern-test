@@ -7,17 +7,14 @@ app.use(express.json());
 app.use(cors());
 const PORT = 3000;
 
-import { validStudent} from "./middleware/middleWare.js";
+import { validStudent, connonCheck} from "./middleware/middleWare.js";
 import student from "./db/db.js";
 import events from "./db/db.js";
 
-app.post("/login", validStudent, (req, res) => {
+app.post("/login", validStudent, connonCheck (req, res) => {
   const newStudent = {
-    id: req.body.id,
-    name: req.body.name,
-    roll: req.body.roll,
-    Branch: req.body.branch,
-    contact: req.body.contact,
+    email: req.body.email,
+    password: req.body.password,
   };
   student.push(newStudent);
   res.status(201).json(newStudent);

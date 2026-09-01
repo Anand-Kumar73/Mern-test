@@ -8,4 +8,9 @@ function validStudent(req,res,next){
     })
   }
  }
- export default validStudent;
+ function CommonCheck(req,res,next){
+  res.status(202).json({
+    "message":"common for every one";
+  })
+ } 
+ export default {validStudent,CommonCheck};
