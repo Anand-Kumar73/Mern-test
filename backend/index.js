@@ -7,8 +7,9 @@ app.use(express.json());
 app.use(cors());
 const PORT = 3000;
 
-import { validStudent, common } from "./middleware/middleWare.js";
+import { validStudent} from "./middleware/middleWare.js";
 import student from "./db/db.js";
+import events from "./db/db.js";
 
 app.post("/login", validStudent, (req, res) => {
   const newStudent = {
@@ -20,6 +21,10 @@ app.post("/login", validStudent, (req, res) => {
   };
   student.push(newStudent);
   res.status(201).json(newStudent);
+});
+
+app.get("events", (req, res) => {
+  res.status(200).json(events);
 });
 
 app.listen(PORT, () => {
