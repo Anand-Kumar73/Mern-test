@@ -8,7 +8,7 @@ const AddEvent = () => {
     const [Eventname, setEventname] = useState("");
     const [Category, setCategory] = useState("");
     const [Location, setLocation] = useState("");
-    const [Date, setDate] = useState("");
+    const [date, setDate] = useState("");
     const [Description, setDescription] = useState("");
 
     const handleSubmit = async (e) => {
@@ -20,7 +20,7 @@ const AddEvent = () => {
                 Eventname: Eventname,
                 Category: Category,
                 Location: Location,
-                Date: Date,
+                Date: date,
                 Description: Description
             });
 
@@ -58,7 +58,7 @@ const AddEvent = () => {
                 <br />
                 <input 
                     type="text" 
-                    value={Date} 
+                    value={date}
                     placeholder="Enter date" 
                     onChange={(e) => setDate(e.target.value)} 
                 />
