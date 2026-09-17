@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import axios from "axios";
 
@@ -22,7 +22,7 @@ const Login = () => {
             navigate("/Home");
 
         } catch (error) {
-            console.log(erroe);
+            console.error("Login failed:", error);
         }
     };
 
@@ -32,7 +32,7 @@ const Login = () => {
                 <br />
                 <input type="text" placeholder="Enter your email" value={email} onChange={(e) => setSetemail(e.target.value)} />
                 <br />
-                <input type="text" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                <input type="password" placeholder="Enter your password" value={password} onChange={(e) => setPassword(e.target.value)} />
                 <button type="submit">Login</button>
             </form>
         </div>

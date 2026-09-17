@@ -29,7 +29,7 @@ app.get("/events/:id", (req, res) => {
   res.json(event);
 });
 
-app.post("/events", validStudent, (req, res) => {
+app.post("/events", (req, res) => {
   const newEvents = {
     id: req.body.id,
     Eventname: req.body.Eventname,

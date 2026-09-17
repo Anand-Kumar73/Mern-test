@@ -17,21 +17,22 @@ const Home = () => {
         setEvents(response.data);
         setFilteredEvents(response.data);
       } catch (error) {
-        console.log("Error fetchig..:", error);
+        console.error("Error fetching events:", error);
       }
     };
 
     getEvents();
   }, []);
 
-  // Debouncing
   const handleSearch = (e) => {
     const query = e.target.value;
 
     setSearchQuery(query);
+  };
 
-    setTimeout(() => {
-      const lowerQuery = query.toLowerCase();
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      const lowerQuery = searchQuery.toLowerCase();
 
       const results = events.filter(
         (event) =>
@@ -42,7 +43,9 @@ const Home = () => {
 
       setFilteredEvents(results);
     }, 500);
-  };
+
+    return () => clearTimeout(timeoutId);
+  }, [events, searchQuery]);
 
   const handleEventClick = (eventId) => {
     navigate(`/events/${eventId}`);

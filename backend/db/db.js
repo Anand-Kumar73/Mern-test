@@ -6,7 +6,7 @@ const events=[
   {
     id:1,
     Eventname: "SIH",
-    Category:"Hackthon",
+    Category:"Hackathon",
     Location:"sviet",
     Date:9,
     Description:"national level event",
@@ -14,10 +14,10 @@ const events=[
   {
     id:2,
     Eventname: "techfest",
-    Category:"techthone",
+    Category:"Tech fest",
     Location:"sviet",
     Date:11,
-    Description:"best emplmention fest",
+    Description:"Best implementation fest",
   }
 
 ];
